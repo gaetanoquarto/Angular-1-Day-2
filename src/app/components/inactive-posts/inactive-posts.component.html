@@ -1,17 +1,14 @@
-<div class="container">
-  <div *ngIf="posts.length > 0;">
-    <div *ngFor="let post of posts; let i = index">
-      <div class="card mb-4">
-        <div class="card-header">
-          Post inactive
+ <div class="container">
+    <div *ngIf="posts.length > 0">
+        <div *ngFor="let post of posts; let i = index">
+            <app-card [post]="post">
+              <button type="button" class="btn btn-primary" (click)="activePost(post.id, i)">Active</button>
+            </app-card>
         </div>
-        <div class="card-body">
-          <h5 class="card-title">{{post.title}}</h5>
-          <p class="card-text">{{post.body}}</p>
-        </div>
-      </div>
     </div>
-  </div>
-  <a type="button" [routerLink]="['/']" class="btn btn-primary mt-3 text-center">Return to Home</a>
+</div>
 
-  </div>
+<div class="container text-center mb-5">
+    <button class="btn btn-primary"><a class="text-white" [routerLink]="['/']" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">Home</a></button>
+</div>

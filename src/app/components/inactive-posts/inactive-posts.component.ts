@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/post';
-import { getPosts } from 'src/app/service/posts.service';
+import { getPosts, updatePost} from 'src/app/service/posts.service';
 
 @Component({
   selector: 'app-inactive-posts',
@@ -24,4 +24,14 @@ export class InactivePostsComponent implements OnInit {
   inactivePosts() {
     this.posts = this.posts.filter(post => !post.active);
   }
-}
+
+
+  activePost(id: number, i: number) {
+updatePost({active: true}, id);
+this.posts.splice(i, 1);
+    }
+
+
+
+    }
+
